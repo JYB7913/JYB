@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //jquery.extend , jquery.fn.extend的区别
+    //jquery.extend()把两个或者更多的对象合并到第一个当中
+    //jquery.fn.extend()把对象挂载到jQuery的prototype属性，来扩展一个新的jQuery实例方法
+    //两者区别：
+    // 1.1jQuery.extend(object); 为扩展jQuery类本身，为自身添加新的方法。
+    // 1.2jQuery.fn.extend(object);给jQuery对象添加方法
+
+    //2.2jQuery.extend(),一般由传入的全局函数来调用，主要是用来拓展个全局函数，如$.init()，$.ajax();
+    //2.3 jQuery.fn.extend(),一般由具体的实例对象来调用，可以用来拓展个选择器，例如$.fn.each();
+    //谈一下jquery中的bind，live，delegate，on区别
+    //bind()是直接绑定在元素上，也很好的解决了浏览器在事件处理中的兼容问题。
+    //1.它会绑定事件到所有的选出来的元素上
+    //2.它不会绑定到在它执行完后动态添加的那些元素上
+    //3.当元素很多时，会出现效率问题
+    //4.当页面加载完的时候，你才可以进行bind()，所以可能产生效率问题
+
+    //live()则是通过冒泡的方式来绑定到元素上的。
+    //这里仅有一次的事件绑定，绑定到document上而不像.bind()那样给所有的元素挨个绑定
+    //那些动态添加的elemtns依然可以触发那些早先绑定的事件，因为事件真正的绑定是在document上
+    //你可以在document ready之前就可以绑定那些需要的事件
+
+    //delegate()则是更精确的小范围使用事件代理，性能优于.live()
+
+    //on()则是最新的1.9版本整合了之前的三种方式的新事件绑定机制。.bind(), .live(), .delegate()都是通过.on()来实现的，.unbind(), .die(), .undelegate(),也是一样的都是通过.off()来实现的。
+
+
+    //document.ready和document.load和$(function(){})有什么区别？
+    //document.ready：表示文档结果已经加载完成（不包含图片等非文字文件）
+    //document.load：要等DOM结构、html页面中的文件、图片加载完成后才会执行
+    //$(function(){})：等DOM结构加载完成后，就会执行
+
+
+    //.data()和$('#aaa').data()各自作用是什么？有什么区别
+    
+</script>
+</body>
+</html>

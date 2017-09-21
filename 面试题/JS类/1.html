@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //DOM事件级别有哪些?
+    //DOM事件分为3个级别：DOM0级事件处理，DOM2级事件处理和DOM3级事件处理。
+
+    //0级及2级的最主要区别:
+    //0级只能为一些特定对象的特定类型的事件注册一个事件监听，但在2级模型中可以为特定对象的事件注册多个事件监听。
+
+    //描述DOM事件捕获和冒泡的具体流程?
+    //事件冒泡即事件开始时，由最具体的元素接收（也就是事件发生所在的节点），然后逐级传播到较为不具体的节点。
+    //当你使用事件冒泡时，子级元素先触发，父级元素后触发，即p先触发，div后触发。
+
+    //
+    //div -> body -> document -> window
+
+
+    //捕获型事件(event capturing)：事件从最不精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。
+    //当你使用事件冒泡时，子级元素先触发，父级元素后触发，即p先触发，div后触发。
+    //window -> document -> body -> button
+
+    //DOM事件流
+    //DOM事件流包括三个阶段:
+    //事件捕获阶段
+    //事件捕获阶段：事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。
+
+    //事件冒泡阶段
+    //事件冒泡阶段：事件从事件目标(target)开始，往上冒泡直到页面的最上一级标签。
+
+    //Event对象的常见应用场景?
+    //当你给你一个元素用DOM2级事件绑定了click事件后，用时它的父级元素也有个click事件，这时为了点击子元素不触发父元素的事件行为，可以通过事件对象来阻止子元素的事件冒泡
+
+    //事件委托是什么？
+    //事件委托就是利用事件冒泡，委托它们父级代为执行事件。
+
+    //事件冒泡e.target和e.currentTarget的区别
+    //target指的是事件的真正触发者，
+    //currenttarget指的是事件的监听者
+    //当不存在冒泡或者捕获的情况下，通常两者指向的对象为同一个，但是如果存在冒泡或者捕获，就会指向各自所产生的对象
+
+
+    //浏览器的兼容问题(js)
+    var winW=document.body.clientWidth||document.docuemntElement.clientWidth;//网页可见区域宽
+    var winH=document.body.clientHeight||document.docuemntElement.clientHeight;//网页可见区域宽
+    //以上为不包括边框的宽高，如果是offsetWidth或者offsetHeight的话包括边框
+
+
+    var winWW=document.body.scrollWidth||document.docuemntElement.scrollWidth;//整个网页的宽
+    var winHH=document.body.scrollHeight||document.docuemntElement.scrollHeight;//整个网页的高
+
+    var scrollHeight=document.body.scrollTop||document.docuemntElement.scrollTop;//网页被卷去的高
+    var scrollLeft=document.body.scrollLeft||document.docuemntElement.scrollLeft;//网页左卷的距离
+
+    //js阻止事件传播，这里使用click事件为例
+    document.onclick=function(e){
+        var e=e||window.event;
+        if (e.stopPropagation) {
+            e.stopPropagation();//W3C标准
+        }else{
+            e.cancelBubble=true;//IE....
+        }
+    }
+
+    //js阻止默认事件
+    document.onclick=function(e){
+        var e=e||window.event;
+        if (e.preventDefault) {
+            e.preventDefault();//W3C标准
+        }else{
+            e.returnValue='false';//IE..
+        }
+    }
+
+    //关于event事件中的target
+    document.onmouseover=function(e){
+        var e=e||window.event;
+        var Target=e.target||e.srcElement;//获取target的兼容写法，后面的为IE
+        var from=e.relatedTarget||e.formElement;//鼠标来的地方，同样后面的为IE...
+        var to=e.relatedTarget||e.toElement;//鼠标去的地方
+    }
+</script>
+</body>
+</html>

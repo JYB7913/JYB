@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //标准模型和IE模型的区别?
+    //标准盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。
+    //IE盒子模型的的范围也包括 margin、border、padding、content，和标准 W3C 盒子模型不同的是：IE 盒子模型的 content 部分包含了 border 和 padding。
+
+    //w3c中的盒子模型的宽高
+    /*width:margin*2+border*2+padding*2+width;
+    height:margin*2+border*2+padding*2+height;*/
+
+    //iE中的盒子模型
+    /*width:margin*2+border*2+padding*2+width;
+    height:margin*2+border*2+padding*2+height;*/
+    // 在ie中content的宽度包括padding和border这两个属性；
+
+    //example:margin:20px,border:10px,padding:10px;width:200px;height:50px;
+    //标准盒子模型
+    /*宽度为：20*2+10*2+10*2+200=280px;
+    高度：20*2+10*2+20*2+50=130px;
+    盒子实际宽度:10*2+10*2+200=240px;
+    实际高度：10*2+10*2+50=90px;*/
+
+    //IE盒子模型
+    /*宽度为：20*2+200=240px;
+     高度：20*2+50=90px;
+     盒子的实际宽度:宽度:200px;
+     实际高度：高度:50px;*/
+
+
+    //CSS是如何设置这两种模型?
+    //标准：box-sizing:content-box
+    //IE：  box-sizing:border-box
+
+    //JS如何设置和获取盒模型对应的宽和高?
+    //1).dom.style.width/height
+    //2).dom.currentStyle.width/height 拿到渲染后的数据 只有IE支持
+    //3). window.getComputedStyle(dom).width/height 用这个 兼容性好
+    //4).dom.getBoundingClientRect().width/height
+
+    //什么是优雅降级和渐进增强?
+    //渐进增强（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。
+    //优雅降级（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览。
+
+
+    //两者之间的微妙差别：
+    /*在本质上：“它们是看待同种事物的两种观点”，“优雅降级”和“渐进增强”的目的都是关注不同浏览器下的不同体验，但是它们侧重点不同，所以导致了工作流程上的不同。*/
+</script>
+</body>
+</html>

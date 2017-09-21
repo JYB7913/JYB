@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*手动定义父级的height*/
+        /*
+        优点：简单，代码少，容易掌握
+        缺点：只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题。
+        */
+        /*#oDiv{
+            height: 200px;
+            border: 1px solid #000;
+            background-color: #11b1ec;
+        }
+        .left{
+            float: left;
+             width: 20%;
+             height: 200px;
+             background-color: #00B83F;
+         }
+        .right{
+            float: right;
+            width: 30%;
+            height: 100px;
+            background-color: #00E1FF;
+        }*/
+
+
+
+        /*添加一个空div
+        优点：简单，代码少，浏览器支持好，不容易出现怪问题
+        缺点：如果页面浮动布局多，就要增加很多空div，让人感觉很不爽
+        */
+        /*#oDiv{
+            border: 1px solid #000;
+            background-color: #11b1ec;
+        }
+        .left{
+            float: left;
+            width: 20%;
+            height: 200px;
+            background-color: #00B83F;
+        }
+        .right{
+            float: right;
+            width: 30%;
+            height: 100px;
+            background-color: #00E1FF;
+        }
+        .clearFloat{
+            clear: both;
+        }*/
+
+        /*
+        原理：通过给父级元素定义伪类after和zoom IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题
+        优点：浏览器支持好，不容易出现怪问题。
+        缺点：代码多。
+        */
+        /*#oDiv{
+            border: 1px solid #000;
+            background-color: #11b1ec;
+        }
+        .left{
+            float: left;
+            width: 20%;
+            height: 200px;
+            background-color: #00B83F;
+        }
+        .right{
+            float: right;
+            width: 30%;
+            height: 100px;
+            background-color: #00E1FF;
+        }
+        .clearFloat:after{
+            display: block;
+            clear: both;
+            content: '';
+            visibility: hidden;
+            height: 0;
+        }
+        .clearFloat{
+            zoom: 1;
+        }*/
+
+
+
+        /*
+        父级元素定义overflow:hidden 同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度
+        优点：简单，代码少，浏览器支持好
+        缺点：不能和position配合使用，因为超出的尺寸的会被隐藏
+        */
+        /*#oDiv{
+            border: 1px solid #000;
+            background-color: #11b1ec;
+            overflow: hidden;
+        }
+        .left{
+            float: left;
+            width: 20%;
+            height: 200px;
+            background-color: #00B83F;
+        }
+        .right{
+            float: right;
+            width: 30%;
+            height: 100px;
+            background-color: #00E1FF;
+        }*/
+
+
+
+        /*
+        父级div定义overflow:auto 必须定义width或zoom:1，同时不能定义height，使用overflow:auto时，浏览器会自动检查浮动区域的高度
+        优点：简单，代码少，浏览器支持好
+        缺点：内部宽高超过父级div时，会出现滚动条。
+        */
+        /*#oDiv{
+            border: 1px solid #000;
+            background-color: #11b1ec;
+            overflow: auto;
+        }
+        .left{
+            float: left;
+            width: 20%;
+            height: 200px;
+            background-color: #00B83F;
+        }
+        .right{
+            float: right;
+            width: 30%;
+            height: 100px;
+            background-color: #00E1FF;
+        }*/
+
+
+
+        /*
+        1.父级div也一起浮动
+        2.父级div定义display:table
+        优点：没有优点
+        缺点：未知 不建议使用 只作了解
+        */
+        /*#oDiv{
+            width: 100%;
+            border: 1px solid #000;
+            background-color: #11b1ec;
+            !*display: table;*!
+            float: left;
+        }
+        .left{
+            float: left;
+            width: 20%;
+            height: 200px;
+            background-color: #00B83F;
+        }
+        .right{
+            float: right;
+            width: 30%;
+            height: 100px;
+            background-color: #00E1FF;
+        }*/
+    </style>
+</head>
+<body>
+<div id="oDiv" class="clearFloat">
+    <div class="left"></div>
+    <div class="right"></div>
+    <!--<div class="clearFloat"></div>-->
+</div>
+</body>
+</html>

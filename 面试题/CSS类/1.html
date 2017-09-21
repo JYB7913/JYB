@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /*1.定位布局*/
+        /*
+        优点：
+        1.左中右三个div的顺序是可以任意调整的
+        2.代码量少，容易理解，不容易受内部元素影响而破坏布局。
+        3.简单实用，并且主要内容可以优先加载。
+        缺点：如果中间栏含有最小宽度限制，或是含有宽度的内部元素，当浏览器宽度小到一定程度，会发生层重叠的情况.
+        */
+        /*#oDiv{
+            margin: 0 auto;
+            width: 100%;
+            height: 100px;
+            background-color: #11b1ec;
+            position: relative;
+        }
+        #oDiv div{
+            position: absolute;
+            top: 0;
+            height: 100px;
+        }
+        #oDiv div:nth-of-type(1){
+            left: 0;
+            width: 300px;
+            background-color: #ff6600;
+        }
+        #oDiv div:nth-of-type(2){
+            right: 0;
+            width: 300px;
+            background-color: #00a57f;
+        }
+        #oDiv div:nth-of-type(3){
+            left: 300px;
+            right: 300px;
+            background-color: #00B83F;
+        }*/
+
+        /*2.float布局*/
+        /*
+        优点：
+        1.左中右三个div的顺序是可以任意调整的
+        2.三栏相互关联，实现真正意义上的自适应，不容易受内部元素影响而破坏布局。
+        缺点：1.如果出现布局的bug，排查不易。
+             2.点就是主要内容无法最先加载，当页面内容较多时会影响用户体验。
+        */
+        /*#oDiv{
+            margin: 0 auto;
+            width: 100%;
+            height: 100px;
+            background-color: #11b1ec;
+            position: relative;
+        }
+        #oDiv div{
+            height: 100px;
+        }
+        #oDiv div:nth-of-type(1){
+            float: left;
+            width: 300px;
+            background-color: #ff6600;
+        }
+        #oDiv div:nth-of-type(2){
+            float: right;
+            width: 300px;
+            background-color: #00a57f;
+        }
+        #oDiv div:nth-of-type(3){
+            margin: 0 300px;
+            background-color: #00B83F;
+        }**/
+
+        /*flex布局*/
+        /*
+        优点：简单实用，未来的趋势.
+        缺点：需要考虑浏览器的兼容性
+        */
+
+        /*#oDiv{
+            margin: 0 auto;
+            width: 100%;
+            height: 100px;
+            background-color: #11b1ec;
+            position: relative;
+            display: flex;
+            display: -webkit-flex;
+        }
+        #oDiv div{
+            height: 100px;
+        }
+        #oDiv div:nth-of-type(1){
+            width: 300px;
+            background-color: #ff6600;
+        }
+        #oDiv div:nth-of-type(2){
+            flex: 1;
+            background-color: #00a57f;
+        }
+        #oDiv div:nth-of-type(3){
+            width: 300px;
+            background-color: #00B83F;
+        }*/
+
+        /*表格布局*/
+
+        /*
+         缺点：无法设置栏间距
+        */
+
+        /*#oDiv{
+            display: table;;
+            width: 100%;
+            height: 100px;
+        }
+        #oDiv>div{
+            display: table-cell;
+        }
+        #oDiv div:nth-of-type(1){
+            width: 300px;
+            background-color: #ff6600;
+        }
+        #oDiv div:nth-of-type(2){
+            text-align: center;
+            background-color: #00a57f;
+        }
+        #oDiv div:nth-of-type(3){
+            width: 300px;
+            background-color: #00B83F;
+        }*/
+
+        /*grid布局*/
+        #oDiv{
+            display: grid;
+            width: 100%;
+            grid-template-rows: 100px;
+            grid-template-columns: 300px auto 300px;
+        }
+        #oDiv div:nth-of-type(1){
+            background-color: #ff6600;
+        }
+        #oDiv div:nth-of-type(2){
+            text-align: center;
+            background-color: #00a57f;
+        }
+        #oDiv div:nth-of-type(3){
+            background-color: #00B83F;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+</body>
+</html>

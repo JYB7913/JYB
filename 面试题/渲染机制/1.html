@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //什么是DOCTYPE及作用?标准模式和兼容模式有什么区别?
+    //位置：<!DOCTYPE>声明位于位于HTML文档中的第一行，处于 <html> 标签之前。
+    //作用：告知浏览器的解析器用什么文档标准解析这个文档。
+
+    //1.width不同
+    //在标准模式中 ：width是内容宽度 ，元素真正的宽度 = margin-left + border-left-width + padding-left + width + padding-right + border-right- width +  margin-right;
+    //在兼容模式中 ：width则是元素的实际宽度 ，内容宽度 = width - ( padding-left + padding-right + border-left-width + border-right-width)
+
+    //2.2.兼容模式下可设置百分比的高度和行内元素的高宽
+    //在Standards模式下，给span等行内元素设置wdith和height都不会生效，而在兼容模式下，则会生效。
+    //在standards模式下，一个元素的高度是由其包含的内容来决定的，如果父元素没有设置高度，子元素设置一个百分比的高度是无效的。
+
+    //3.用margin:0 auto设置水平居中在IE下会失效
+    //使用margin:0 auto在standards模式下可以使元素水平居中，但在兼容模式下却会失效（用text-align属性解决）
+    //body{text-align:center};#content{text-align:left}
+
+    //4.兼容模式下Table中的字体属性不能继承上层的设置，white-space:pre会失效，设置图片的padding会失效
+
+    //浏览器是如何渲染页面的?
+    //1.解析HTML文件，创建DOM树
+    //自上而下，遇到任何样式（link、style）与脚本（script）都会阻塞（外部样式不阻塞后续外部脚本的加载）。
+    //2.解析CSS
+    //优先级：浏览器默认设置<用户设置<外部样式<内联样式<HTML中的style样式；
+    //特定级：id数*100+类或伪类数*10+tag名称*1
+    //3.将CSS与DOM合并，构建渲染树（renderingtree）
+    //DOM树与HTML一一对应，渲染树会忽略诸如head、display:none的元素
+    //4.布局和绘制，重绘（repaint）和重排（reflow）
+    //重排：若渲染树的一部分更新，且尺寸变化，就会发生重排；
+    //重绘：部分节点需要更新，但不改变其他集合形状。如改变某个元素的颜色，就会发生重绘。
+
+
+    //什么是重排？什么时候会触发重排?
+    //什么是重绘？什么时候会触发重绘?
+    //重排就是DOM节点的增删改查，就会触发重排。
+    //重绘就是元素样式发生改变(字体颜色)，就会触发重绘
+    //1.重绘和重排何时会发生：
+    //（1）增加或删除DOM节点；
+    //（2）display:none（重排并重绘）；visibility:hidden（重绘）；
+    //（3）移动页面中的元素；
+    //（4）增加或修改样式；
+    //（5）用户改变窗口大小，滚动页面等。
+</script>
+</body>
+</html>

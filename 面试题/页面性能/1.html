@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //前端性能优化的方法有哪些？至少说出10种以上
+    //第一：面向内容的优化
+    //1. 减少 HTTP 请求
+    //2. 减少 DNS 查找
+    //3. 避免重定向
+    //4. 使用 Ajax 缓存
+    //5. 延迟载入组件
+    //6. 预先载入组件
+    //7. 减少 DOM 元素数量
+    //8. 切分组件到多个域
+    //9. 最小化 iframe 的数量
+    //10.  不要出现http 404 错误
+    //11.雪碧图技术
+    //12.css，js文件合并
+    //第二：面向 Server
+    //1. 缩小 Cookie
+    //2. 针对 Web 组件使用域名无关性的
+
+
+    //如何实现JS的异步加载? async和defer的区别是什么?
+    //(1)defer 只支持IE efer 属性规定是否对脚本执行进行延迟，直到页面加载为止。
+    //(2)async 属性规定一旦脚本可用，则会异步执行。
+    //(3) 创建script，插入到DOM中，加载完毕后callBack.
+
+    //1、defer和async的共同点：
+    //(1)不会阻塞文档元素的加载。
+    //(2)使用这两个属性的脚本中不能调用document.write方法。
+    //(3)允许不定义属性值，仅仅使用属性名。
+    //(4)只适用于外部脚本（虽然IE4-IE7还支持对嵌入脚本的defer属性，但在IE8及之后的版本就只支持外部脚本，对不支持的会直接忽略defer属性，因此把延迟脚本放在页面底部仍然是最佳选择）。
+
+    //2、defer和async的不同点：
+    //(1)每一个async属性的脚本一旦加载完毕就会立刻执行，一定会在window.onload之前执行，但可能在document的DOMContentLoaded之前或之后执行。不保证按照指定它们的顺序来执行，如果JS有依赖性就要注意了。指定异步脚本的目的是不让页面等待两个脚本下载和执行，从而异步加载页面其他内容，因此，建议异步脚本不要在加载期间修改DOM。
+    //(2)每一个defer属性的脚本都是在文档元素完全载入后，一般会按照原本的顺序执行，同时一般会在document的DOMContentLoaded之前执行，相当于window.onload，但应用上比 window.onload 更灵活！实际上，defer 更接近于DomContentLoad。事实上，延迟脚本不一定会按顺序执行，也不一定会在DOMContentLoaded事件触发之前执行，因此最好只包含一个延迟脚本。
+</script>
+</body>
+</html>
